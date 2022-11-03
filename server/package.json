@@ -15,7 +15,8 @@
     "cors": "^2.8.5",
     "csv-parse": "^5.3.1",
     "express": "^4.18.2",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "nasa_19110441": "file:.."
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
