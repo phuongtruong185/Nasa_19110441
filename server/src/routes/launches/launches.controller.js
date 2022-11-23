@@ -5,8 +5,12 @@ const {
   abortLaunchById,
 } = require("../../models/launches.model");
 
-function httpGetAllLaunches(req, res) {
-  return res.status(200).json(getAllLaunches());
+const {getPagination} = require('../../services/query');
+
+const httpGetAllLaunches = async (req, res) => {
+  const {skip, limit} = getPagination(req.query);
+
+  return res.status(200).json(await getAllLaunches(skip, limit));
 }
 
 function httpAddNewLaunch(req, res) {
@@ -32,7 +36,7 @@ function httpAddNewLaunch(req, res) {
   return res.status(201).json(launch);
 }
 
-function httpAbortLaunch(req, res) {
+const httpAbortLaunch =async (req, res) => {
   const launchId = Number(req.params.id);
   if (!launchId) {
     return res.status(400).json({
